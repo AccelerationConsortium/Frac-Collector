@@ -15,7 +15,7 @@ Developed to address the limitations of commercial and open-source fraction coll
 ---
 
 ## Assembly Guide
-
+<img src="/images/fraction_collector_scheme_github.png" height="400"><img src="/images/Assembly.gif" height="450">
 ### Bill of Materials (BoM)
 The BoM to construct the fraction collector is shown below. 
 
