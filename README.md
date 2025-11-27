@@ -21,13 +21,13 @@ The BoM to construct the fraction collector is shown below.
 
 | **Item**       | **Manufacturer** | **Part No.**               | **Qty** | **Specifications**        | **Unit Cost (USD)** | **Notes**                              |
 | -------------- | ---------------- | -------------------------- | ------: | ------------------------- | ------------------: | -------------------------------------- |
-| CNC Router     | Genmitsu         | 3018-PROVer V2             |       1 | 425 × 352 × 300 mm        |             $228.65 | Main platform                          |
-| Selector Valve | Runze Fluid      | QHF-SV04M-B-X-U-T10-K1.2-C |       1 | 10 Port or 6 Port         |             $414.00 | Switching between waste and collection |
-| Drop Counter   | Vernier®         | GDX-DC                     |       1 | Go Direct®                |             $206.00 | For drop counting                      |
+| CNC Router     | Genmitsu         | [3018-PROVer V2](https://www.sainsmart.com/products/genmitsu-3018-prover-v2-upgraded-semi-assembled-cnc-router-kit?utm_source=genmitsu-store&utm_medium=prover-series&utm_campaign=3018-proverv2&utm_id=Genmitsu-store)             |       1 | 425 × 352 × 300 mm        |             $228.65 | Main platform                          |
+| Selector Valve | Runze Fluid      | [QHF-SV04M-B-X-U-T10-K1.2-C](https://www.runzefluid.com/products/multi-channel-selector-valves.html) |       1 | 10 Port or 6 Port         |             $414.00 | Switching between waste and collection |
+| Drop Counter   | Vernier®         | [GDX-DC](https://www.vernier.com/product/go-direct-drop-counter/?srsltid=AfmBOopKKdZ9Pfcaha1FuK1Nue-k3lo1tJjQME_0pA12iBQVO1QABwCl)                     |       1 | Go Direct®                |             $206.00 | For drop counting                      |
 | Fixture        | N/A              | N/A                        |       1 | Custom 3D-Printed         |        $2.00 (est.) | For integrating modules                |
-| Tubing         | IDEX             | 1502                       |   ≥5 ft | 1/16″ OD × 0.030″ ID, PFA |              $28.45 | Tubing                                 |
-| Flangeless Nut | IDEX             | P-245                      |      ≥5 | 1/4-28, PFA               |          $3.36 each | Tubing connector                       |
-| Ferrule        | IDEX             | P-200N                     |      ≥5 | 1/4-28 for 1/16″ OD, ETFE |          $1.79 each | Tubing connector                       |
+| Tubing         | IDEX             | [1502](https://www.idex-hs.com/store/product-detail/pfa_tubing_natural_1_16_od_x_030_id_x_5ft/1502)                       |   ≥5 ft | 1/16″ OD × 0.030″ ID, PFA |              $28.45 | Tubing                                 |
+| Flangeless Nut | IDEX             | [P-245](https://www.idex-hs.com/store/product-detail/flangeless_nut_pfa_1_4_28_flat_bottom_for_1_16_od_natural/p-245)                      |      ≥5 | 1/4-28, PFA               |          $3.36 each | Tubing connector                       |
+| Ferrule        | IDEX             | [P-200N](https://www.idex-hs.com/store/product-detail/flangeless_ferrule_tefzel_etfe_1_4_28_flat_bottom_for_1_16_od_natural/p-200n)                     |      ≥5 | 1/4-28 for 1/16″ OD, ETFE |          $1.79 each | Tubing connector                       |
 
 ### Mechanical Assembly
 
