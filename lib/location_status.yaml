@@ -1,0 +1,39 @@
+organic_waste_location:
+  x_origin: 15
+  y_origin: 5
+  z_origin: 0
+aqueous_waste_location:
+  x_origin: 44
+  y_origin: 32
+  z_origin: 0
+main_20mL_rack:
+  num_x: 3
+  num_y: 2
+  x_origin: 166.5
+  y_origin: 68
+  z_origin: 0
+  x_offset: 37.5
+  y_offset: -36
+well_plate_location: #48-well locations (index 0 through 47)
+  num_x: 6
+  num_y: 8
+  x_origin: 35.5
+  y_origin: 132
+  z_origin: -12
+  x_offset: 14
+  y_offset: -14
+  #Note: These locations may need to be edited
+cnc_waste_location: #Top right edge of the 48-well plate
+  x_origin: 174
+  y_origin: 20
+  z_origin: 0
+
+96_well_plate_location: 
+  num_x: 8
+  num_y: 12
+  x_origin: 38
+  y_origin: 131
+  z_origin: -30
+  x_offset: 9
+  y_offset: -9
+  
