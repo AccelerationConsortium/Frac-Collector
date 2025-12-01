@@ -31,7 +31,7 @@ The BoM to construct the fraction collector is shown below.
 
 ### Mechanical Assembly
 
-1. **CNC Platform Setup**
+1. **CNC Platform Setup (1-2 hours)**
    - Assemble CNC frame per manufacturer instructions.
    - Mount custom vial tray or holder onto the platform.
 
