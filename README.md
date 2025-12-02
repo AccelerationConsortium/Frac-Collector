@@ -30,20 +30,20 @@ The BoM to construct the fraction collector is shown below.
 | Ferrule        | IDEX             | [P-200N](https://www.idex-hs.com/store/product-detail/flangeless_ferrule_tefzel_etfe_1_4_28_flat_bottom_for_1_16_od_natural/p-200n)                     |      ≥5 | 1/4-28 for 1/16″ OD, ETFE |          $1.79 each | Tubing connector                       |
 
 ### Mechanical Assembly
-
+<img src="/images/Wiring.png" height="450"> &nbsp;&nbsp;&nbsp; <img src="/images/Toolhead.png" height="450">   
 1. **CNC Platform Setup (1-2 hours)**
    - Assemble CNC frame per manufacturer instructions.
    - Mount custom vial tray or holder onto the platform.
 
-2. **Selector Valve Integration**
-   - Secure the selector valve near the fluid outlet line.
-   - Route the waste and collection tubing through chemically resistant tubing into waste and collection vials.
+2. **Selector Valve Integration (30 min)**
+   - Wire the connectors following the above wiring guideline.
+   - Secure the selector valve on the 3D-printed fixture and the CNC tool head.
+   - Route the inlet, waste, and collection lines through chemically resistant tubing and nuts.
 
-3. **Drop Counter Installation**
-   - Position the drop counter below the outlet nozzle.
-   - Calibrate sensor height to detect single droplets accurately.
+3. **Drop Counter Installation (30 min)**
+   - Secure the drop counter on the 3D-printed fixture.
+   - Calibrate sensor and tubing height to detect single droplets accurately.
 
 ### Software & Control
-
-- The fraction collector is controlled via a Python interface.
+- The fraction collector is fully controlled via a Python interface using the code in the repository.
 
