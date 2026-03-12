@@ -3,12 +3,13 @@ import time
 from threading import Event
 import math
 import yaml
+import os
 
 
 class CNC_Machine():
     #All of this data could also be stored in a yaml file
     BAUD_RATE = 115200
-    SERIAL_PORT = "COM6" #Serial Port you are using
+    SERIAL_PORT = "COM9" #Serial Port you are using
     X_LOW_BOUND = 0
     X_HIGH_BOUND = 270 #Note this bound wasn't working upstairs, but it is usually the boundary for the small CNC machine
     Y_LOW_BOUND = 0
@@ -23,9 +24,16 @@ class CNC_Machine():
     VIRTUAL=True #Is this a simulation?
 
     def __init__(self,virtual=False):
-        self.LOCATIONS = self.load_from_yaml(self.LOCATION_FILE)
+        self.LOCATIONS = self.load_from_yaml(self._resolve_location_file())
         self.VIRTUAL = virtual
         print("Connected to CNC Machine!")
+
+    def _resolve_location_file(self):
+        """Find location_status.yaml relative to this file, falling back to the bare filename."""
+        candidate = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.LOCATION_FILE)
+        if os.path.isfile(candidate):
+            return candidate
+        return self.LOCATION_FILE
 
     def load_from_yaml(self,file_in):
         with open(file_in, "r") as file:
@@ -90,14 +98,22 @@ class CNC_Machine():
     #Move to a location defined in the Locations file
     def move_to_location(self,location_name,location_index,safe=True,speed=3000):
         print(f"Moving to location: {location_name} at index {location_index}")
-        x,y,z = self.get_location_position(location_name,location_index)
+        x,y,z = self.get_location_position(location_name, location_index)
         if safe:
             self.move_to_point_safe(x,y,z,speed=speed)
         else:
             self.move_to_point(x,y,z,speed=speed)
 
     #Get the location in x,y,z from name and index
-    def get_location_position(self,location_name,location_index):
+    # Traversal order: Y-first snake (boustrophedon).
+    # Each X column is filled top-to-bottom; on the next X column the direction
+    # reverses (bottom-to-top), minimising CNC travel between adjacent vials.
+    #
+    # Example (num_x=3, num_y=3):
+    #   col 0 (even): indices 0,1,2  → y0→y1→y2  (forward)
+    #   col 1 (odd):  indices 3,4,5  → y2→y1→y0  (reverse)
+    #   col 2 (even): indices 6,7,8  → y0→y1→y2  (forward)
+    def get_location_position(self, location_name, location_index):
         x = self.LOCATIONS[location_name]['x_origin']
         y = self.LOCATIONS[location_name]['y_origin']
         z = self.LOCATIONS[location_name]['z_origin']
@@ -108,13 +124,21 @@ class CNC_Machine():
                 num_y = self.LOCATIONS[location_name]['num_y']
                 x_offset = self.LOCATIONS[location_name]['x_offset']
                 y_offset = self.LOCATIONS[location_name]['y_offset']
-                x = x + location_index%num_x*x_offset
-                y = y + math.floor(location_index/num_x)*y_offset
-            except:
+
+                col = location_index // num_y          # which X column
+                row = location_index % num_y           # position within that column
+
+                # Reverse row direction on odd columns (snake)
+                if col % 2 == 1:
+                    row = (num_y - 1) - row
+
+                x = x + col * x_offset
+                y = y + row * y_offset
+            except Exception:
                 print("Error extracting location from locations")
                 return None
-        
-        return x,y,z
+
+        return x, y, z
 
     #Returns the gcode to move to a point (x,y,z)
     #You can create a long gcode list to execute all at once instead of doing it line-by-line

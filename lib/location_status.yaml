@@ -17,14 +17,14 @@ main_20mL_rack:
 well_plate_location: #48-well locations (index 0 through 47)
   num_x: 6
   num_y: 8
-  x_origin: 35.5
-  y_origin: 132
-  z_origin: -12
-  x_offset: 14
-  y_offset: -14
+  x_origin: 36
+  y_origin: 135
+  z_origin: -10
+  x_offset: 14.6
+  y_offset: -14.6
   #Note: These locations may need to be edited
 cnc_waste_location: #Top right edge of the 48-well plate
-  x_origin: 174
+  x_origin: 170
   y_origin: 20
   z_origin: 0
 
