@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased] - 2026-03-19
+
+### Added
+- `location_status.yaml` (`well_plate_location`): added `x_step: 2` so the CNC skips every other physical x-column, giving 24 active vial positions (physical cols 0, 2, 4) out of the 48-well plate.
+- `cnc_machine.py` (`get_location_position`): reads optional `x_step` from the location config (defaults to 1). Physical column is computed as `logical_col * x_step`; snake direction still alternates on logical column parity so consecutive filled columns zig-zag correctly.
+
+## [Unreleased] - 2026-03-17
+
+### Fixed
+- `collect_reaction`: `per_vial_timeout` was incorrectly included in `effective_timeout` even in time-only mode (`use_drops=False`), capping each vial to 10 s and causing premature end of collection (15-20 s of sample lost). In time-only mode `effective_timeout` is now `min(current_fill_time_s, remaining)` — `per_vial_timeout` is only applied as a safety net when using the drop sensor.
+- `collect_reaction`: the per-vial abort (`break`) branch now only fires in drop mode. In time-only mode, vials advance on the time-based trigger regardless of `per_vial_timeout`.
+
 ## [Unreleased] - 2026-03-12
 
 ### Changed

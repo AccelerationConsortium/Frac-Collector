@@ -106,13 +106,16 @@ class CNC_Machine():
 
     #Get the location in x,y,z from name and index
     # Traversal order: Y-first snake (boustrophedon).
-    # Each X column is filled top-to-bottom; on the next X column the direction
-    # reverses (bottom-to-top), minimising CNC travel between adjacent vials.
+    # Each logical column is filled top-to-bottom; on the next logical column
+    # the direction reverses (bottom-to-top), minimising CNC travel.
+    # Optional 'x_step' in the location config controls how many physical
+    # columns to advance per logical column (default 1).  Set x_step: 2 to
+    # skip every other x-column (e.g. 48-well plate → 24 active vials).
     #
-    # Example (num_x=3, num_y=3):
-    #   col 0 (even): indices 0,1,2  → y0→y1→y2  (forward)
-    #   col 1 (odd):  indices 3,4,5  → y2→y1→y0  (reverse)
-    #   col 2 (even): indices 6,7,8  → y0→y1→y2  (forward)
+    # Example (num_y=8, x_step=2):
+    #   logical col 0 → physical col 0: indices 0-7   (forward)
+    #   logical col 1 → physical col 2: indices 8-15  (reverse)
+    #   logical col 2 → physical col 4: indices 16-23 (forward)
     def get_location_position(self, location_name, location_index):
         x = self.LOCATIONS[location_name]['x_origin']
         y = self.LOCATIONS[location_name]['y_origin']
@@ -124,12 +127,14 @@ class CNC_Machine():
                 num_y = self.LOCATIONS[location_name]['num_y']
                 x_offset = self.LOCATIONS[location_name]['x_offset']
                 y_offset = self.LOCATIONS[location_name]['y_offset']
+                x_step = self.LOCATIONS[location_name].get('x_step', 1)
 
-                col = location_index // num_y          # which X column
+                logical_col = location_index // num_y  # logical column index
                 row = location_index % num_y           # position within that column
+                col = logical_col * x_step             # physical column (may skip)
 
-                # Reverse row direction on odd columns (snake)
-                if col % 2 == 1:
+                # Reverse row direction on odd logical columns (snake)
+                if logical_col % 2 == 1:
                     row = (num_y - 1) - row
 
                 x = x + col * x_offset

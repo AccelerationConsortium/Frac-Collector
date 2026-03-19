@@ -14,14 +14,24 @@ main_20mL_rack:
   z_origin: 0
   x_offset: 37.5
   y_offset: -36
-well_plate_location: #48-well locations (index 0 through 47)
+well_plate_location: #48-well locations (index 0 through 47); x_step: 2 → use 24 vials (cols 0,2,4 only)
   num_x: 6
   num_y: 8
+  x_step: 2    # advance 2 physical columns per logical column (skip empty cols)
   x_origin: 36
   y_origin: 135
   z_origin: -10
-  x_offset: 14.6
-  y_offset: -14.6
+  x_offset: 14.0
+  y_offset: -14.0
+  #Note: These locations may need to be edited
+well_plate_location_bottom_of_vial: #48-well locations (index 0 through 47)
+  num_x: 6
+  num_y: 8
+  x_origin: 50
+  y_origin: 135
+  z_origin: -30
+  x_offset: 14.0
+  y_offset: -14.0
   #Note: These locations may need to be edited
 cnc_waste_location: #Top right edge of the 48-well plate
   x_origin: 170
