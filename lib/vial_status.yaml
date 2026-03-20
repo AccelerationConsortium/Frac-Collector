@@ -1,193 +1,241 @@
 vials:
 - index: 0
-  label: GPC
-  reaction_name: 20260316_test1
-  volume_ml: 0.1
+  vial_name: A1
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 1
-  label: sample
-  reaction_name: 20260316_test1
-  volume_ml: 1.5
+  vial_name: A2
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 2
-  label: sample
-  reaction_name: 20260316_test1
-  volume_ml: 1.195
+  vial_name: A3
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 3
-  label: GPC
-  reaction_name: 20260316_test2
-  volume_ml: 0.1
+  vial_name: A4
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 4
-  label: sample
-  reaction_name: 20260316_test2
-  volume_ml: 1.5
+  vial_name: A5
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 5
-  label: sample
-  reaction_name: 20260316_test2
-  volume_ml: 1.1929
+  vial_name: A6
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 6
-  label: GPC
-  reaction_name: 20260316_test1
-  volume_ml: 0.1
+  vial_name: A7
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 7
-  label: sample
-  reaction_name: 20260316_test1
-  volume_ml: 1.5
+  vial_name: A8
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 8
-  label: sample
-  reaction_name: 20260316_test1
-  volume_ml: 1.193
+  vial_name: B1
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 9
-  label: GPC
-  reaction_name: 20260316_test2
-  volume_ml: 0.1
+  vial_name: B2
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 10
-  label: sample
-  reaction_name: 20260316_test2
-  volume_ml: 1.5
+  vial_name: B3
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 11
-  label: sample
-  reaction_name: 20260316_test2
-  volume_ml: 1.2156
+  vial_name: B4
+  label: ''
+  reaction_name: ''
+  volume_ml: 0.0
 - index: 12
+  vial_name: B5
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 13
+  vial_name: B6
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 14
+  vial_name: B7
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 15
+  vial_name: B8
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 16
+  vial_name: C1
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 17
+  vial_name: C2
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 18
+  vial_name: C3
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 19
+  vial_name: C4
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 20
+  vial_name: C5
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 21
+  vial_name: C6
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 22
+  vial_name: C7
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 23
+  vial_name: C8
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 24
+  vial_name: D1
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 25
+  vial_name: D2
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 26
+  vial_name: D3
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 27
+  vial_name: D4
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 28
+  vial_name: D5
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 29
+  vial_name: D6
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 30
+  vial_name: D7
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 31
+  vial_name: D8
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 32
+  vial_name: E1
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 33
+  vial_name: E2
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 34
+  vial_name: E3
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 35
+  vial_name: E4
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 36
+  vial_name: E5
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 37
+  vial_name: E6
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 38
+  vial_name: E7
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 39
+  vial_name: E8
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 40
+  vial_name: F1
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 41
+  vial_name: F2
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 42
+  vial_name: F3
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 43
+  vial_name: F4
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 44
+  vial_name: F5
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 45
+  vial_name: F6
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 46
+  vial_name: F7
   label: ''
   reaction_name: ''
   volume_ml: 0.0
 - index: 47
+  vial_name: F8
   label: ''
   reaction_name: ''
   volume_ml: 0.0

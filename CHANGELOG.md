@@ -3,6 +3,8 @@
 ## [Unreleased] - 2026-03-19
 
 ### Added
+- `lib/cnc_config.yaml`: new configuration file for the CNC machine, covering `serial_port`, `baud_rate`, axis travel limits (`x/y/z_low_bound`, `x/y/z_high_bound`), and `location_file`.
+- `cnc_machine.py` (`_load_config`): loads `cnc_config.yaml` at construction time. All hardware constants (`SERIAL_PORT`, `BAUD_RATE`, bounds, `LOCATION_FILE`) are now set from the YAML rather than hardcoded as class attributes. A custom config path can be passed via `CNC_Machine(config_file=...)`.
 - `location_status.yaml` (`well_plate_location`): added `x_step: 2` so the CNC skips every other physical x-column, giving 24 active vial positions (physical cols 0, 2, 4) out of the 48-well plate.
 - `cnc_machine.py` (`get_location_position`): reads optional `x_step` from the location config (defaults to 1). Physical column is computed as `logical_col * x_step`; snake direction still alternates on logical column parity so consecutive filled columns zig-zag correctly.
 

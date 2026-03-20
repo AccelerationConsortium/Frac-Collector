@@ -6,6 +6,13 @@ VALID_LABELS = {"GPC", "sample", ""}
 DEFAULT_YAML_PATH = os.path.join(os.path.dirname(__file__), "vial_status.yaml")
 
 
+def _vial_name(index: int, num_y: int = 8) -> str:
+    """Return the well-plate name for a vial index (e.g. 0 → 'A1', 8 → 'B1')."""
+    col = index // num_y
+    row = index % num_y
+    return chr(ord('A') + col) + str(row + 1)
+
+
 class VialTracker:
     """Persistent vial tracking for a 48-vial rack.
 
@@ -14,6 +21,7 @@ class VialTracker:
 
     Each vial entry contains:
         index         (int)   — 0-based position in the rack
+        vial_name     (str)   — well-plate label, e.g. "A1", "B3"
         reaction_name (str)   — name of the reaction that filled this vial
         label         (str)   — "GPC" | "sample" | "" (empty = unused)
         volume_ml     (float) — volume collected in mL
@@ -34,7 +42,7 @@ class VialTracker:
 
     def _initialize(self):
         self.vials = [
-            {"index": i, "reaction_name": "", "label": "", "volume_ml": 0.0}
+            {"index": i, "vial_name": _vial_name(i), "reaction_name": "", "label": "", "volume_ml": 0.0}
             for i in range(self.num_vials)
         ]
 
@@ -46,8 +54,12 @@ class VialTracker:
         # Ensure the list always has exactly num_vials slots
         while len(self.vials) < self.num_vials:
             i = len(self.vials)
-            self.vials.append({"index": i, "reaction_name": "", "label": "", "volume_ml": 0.0})
+            self.vials.append({"index": i, "vial_name": _vial_name(i), "reaction_name": "", "label": "", "volume_ml": 0.0})
         self.vials = self.vials[: self.num_vials]
+        # Backfill vial_name for entries loaded from older yaml files
+        for v in self.vials:
+            if not v.get("vial_name"):
+                v["vial_name"] = _vial_name(v["index"])
 
     def _save(self):
         with open(self.yaml_path, "w") as f:
@@ -56,7 +68,7 @@ class VialTracker:
     # ---- Public API ----
 
     def reset(self):
-        """Clear reaction_name, label, and volume_ml for all vials. Slot indices are preserved."""
+        """Clear reaction_name, label, and volume_ml for all vials. Index and vial_name are preserved."""
         for vial in self.vials:
             vial["reaction_name"] = ""
             vial["label"] = ""
@@ -99,10 +111,10 @@ class VialTracker:
         if not filled:
             print("No vials have been recorded yet.")
             return
-        print(f"\n{'Index':<8} {'Label':<8} {'Volume (mL)':<14} Reaction")
-        print("-" * 50)
+        print(f"\n{'Index':<8} {'Vial':<6} {'Label':<8} {'Volume (mL)':<14} Reaction")
+        print("-" * 56)
         for v in filled:
-            print(f"{v['index']:<8} {v['label']:<8} {v['volume_ml']:<14.4f} {v['reaction_name']}")
+            print(f"{v['index']:<8} {v.get('vial_name', ''):<6} {v['label']:<8} {v['volume_ml']:<14.4f} {v['reaction_name']}")
     def next_available_index(self) -> int:
         """Return the index of the first vial with an empty label (i.e. unused).
 

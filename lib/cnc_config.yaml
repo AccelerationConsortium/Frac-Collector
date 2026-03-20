@@ -1,0 +1,14 @@
+# CNC Machine configuration
+serial_port: COM9
+baud_rate: 115200
+
+# Axis travel limits (mm)
+x_low_bound: 0
+x_high_bound: 270   # boundary for small CNC machine
+y_low_bound: 0
+y_high_bound: 150
+z_low_bound: -35
+z_high_bound: 0
+
+# Path to vial location definition file (relative to this config file)
+location_file: location_status.yaml
