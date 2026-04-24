@@ -5,6 +5,7 @@ from vial_tracker import VialTracker
 import time
 import math
 import os
+import yaml
 
 DROP_VOLUME_ML = 0.025   # 1 drop = 25 µL = 0.025 mL
 GPC_VOLUME_ML  = 0.10   # first vial per reaction: 4 drops × 0.025 mL
@@ -17,13 +18,22 @@ class FractionCollector:
     mux_id = None
 
     def __init__(self, sensor_id=1, runze_valve_port='COM7', runze_valve_address=0, runze_valve_num_port=10, collection_num=3, waste_num=6,
-                 vial_tracker_path=None):
+                 vial_tracker_path=None, config_file=None, cnc_machine=None):
+        if config_file is not None:
+            with open(config_file) as f:
+                cfg = yaml.safe_load(f).get('fraction_collector', {})
+            sensor_id = cfg.get('sensor_id', sensor_id)
+            runze_valve_port = cfg.get('runze_valve_port', runze_valve_port)
+            runze_valve_address = cfg.get('runze_valve_address', runze_valve_address)
+            runze_valve_num_port = cfg.get('runze_valve_num_port', runze_valve_num_port)
+            collection_num = cfg.get('collection_num', collection_num)
+            waste_num = cfg.get('waste_num', waste_num)
         try:
             self.counter = DripCounter(sensor_id=sensor_id)
         except Exception as ex:
             print(f"Drop counter initialisation failed ({ex}). Falling back to time-based mode.")
             self.counter = None
-        self.cnc_machine = CNC_Machine()
+        self.cnc_machine = cnc_machine if cnc_machine is not None else CNC_Machine()
         self.valve = RunzeValve(com_port=runze_valve_port, address=runze_valve_address, num_port=runze_valve_num_port)
         self.collection_num = collection_num
         self.waste_num = waste_num

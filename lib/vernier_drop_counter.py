@@ -1,10 +1,10 @@
 import time
-from gdx import gdx
+from gdx import GDX
 
 class DripCounter:
     def __init__(self, sensor_id=1):
         self.available = False
-        self.device = gdx.gdx()
+        self.device = GDX()
         try:
             self.sensor_type = "GDX-DC 05501561"
             self.device.open(connection='usb', device_to_open=self.sensor_type)
